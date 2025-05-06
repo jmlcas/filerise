@@ -1,0 +1,17 @@
+services:
+
+    filerise:
+        image: error311/filerise-docker:latest
+        container_name: filerise
+        restart: unless-stopped
+        ports:
+            - "8200:80"
+        environment:
+            - TIMEZONE=Europe/Madrid
+            - TOTAL_UPLOAD_SIZE=5G
+            - SECURE=false
+            - PERSISTENT_TOKENS_KEY="please_change_this_@@"
+        volumes:
+            - ./uploads:/var/www/uploads
+            - ./users:/var/www/users
+            - ./metadata:/var/www/metadata
